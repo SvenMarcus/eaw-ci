@@ -7,8 +7,9 @@
         <RepositoryUrl>https://github.com/AlamoEngine-Tools/eaw-ci</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageProjectUrl>https://github.com/AlamoEngine-Tools/eaw-ci</PackageProjectUrl>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <StartupObject>eawx_build_lua.Program</StartupObject>
+        <PublishTrimmed>true</PublishTrimmed>
+        <RuntimeIdentifiers>osx-x64;win10-x64;linux-x64</RuntimeIdentifiers>
     </PropertyGroup>
 
     <ItemGroup>

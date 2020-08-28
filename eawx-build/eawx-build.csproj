@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <RootNamespace>EawXBuild</RootNamespace>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>{F680D892-58D2-40B5-B326-7A9225770903}</ProjectGuid>
@@ -20,7 +19,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/AlamoEngine-Tools/eaw-ci</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <StartupObject>EawXBuild.Host</StartupObject>
+<!--    <StartupObject>EawXBuild.Host</StartupObject>-->
     <Deterministic>false</Deterministic>
   </PropertyGroup>
 
