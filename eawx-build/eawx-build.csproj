@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>EawXBuild</RootNamespace>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>{F680D892-58D2-40B5-B326-7A9225770903}</ProjectGuid>
     <Title>EaW CI</Title>
     <Authors>Sven Marcus &amp; Lukas Grünwald</Authors>

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>eawx_build_lua</RootNamespace>
+        <RepositoryUrl>https://github.com/AlamoEngine-Tools/eaw-ci</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/AlamoEngine-Tools/eaw-ci</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <StartupObject>eawx_build_lua.Program</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\eawx-build\eawx-build.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.8.0" />
+        <PackageReference Include="NLua" Version="1.5.1" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <EmbeddedResource Include="build_utilities.lua" />
+    </ItemGroup>
+</Project>

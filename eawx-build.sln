@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eawx-build-lua", "eawx-build-lua\eawx-build-lua.csproj", "{177EB99D-BADA-450D-9F5A-3AECEBDC4756}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,5 +51,17 @@ Global
 		{BE91E638-E07D-4DBC-B0BB-80CA052B455A}.Release|x64.Build.0 = Release|Any CPU
 		{BE91E638-E07D-4DBC-B0BB-80CA052B455A}.Release|x86.ActiveCfg = Release|Any CPU
 		{BE91E638-E07D-4DBC-B0BB-80CA052B455A}.Release|x86.Build.0 = Release|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Debug|x64.Build.0 = Debug|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Debug|x86.Build.0 = Debug|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Release|x64.ActiveCfg = Release|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Release|x64.Build.0 = Release|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Release|x86.ActiveCfg = Release|Any CPU
+		{177EB99D-BADA-450D-9F5A-3AECEBDC4756}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
