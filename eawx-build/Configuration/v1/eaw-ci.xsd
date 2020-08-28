@@ -67,7 +67,7 @@
     </xs:complexType>
     <xs:simpleType name="FilePathType">
         <xs:restriction base="xs:string">
-            <xs:pattern value="^[a-z0-9]([a-z0-9-]*[a-z0-9])?(/[a-z0-9]([a-z0-9-]*[a-z0-9])?)*(/[a-z0-9]([a-z0-9-.]*[a-z0-9])?)?$"/>
+            <xs:pattern value="^[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?(/[A-Za-z0-9]([A-Za-z0-9-]*[A-za-z0-9])?)*(/[A-Za-z0-9]([A-Za-z0-9-.]*[a-z0-9])?)?$"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="FilePatternType">

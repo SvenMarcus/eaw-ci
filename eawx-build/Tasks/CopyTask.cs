@@ -20,6 +20,7 @@ namespace EawXBuild.Tasks {
 
         public string FilePattern { get; set; }
         public bool AlwaysOverwrite { get; set; }
+        public string Description => $"Copying files from \"{Source}\" to \"{Destination}\"";
 
         public void Run() {
             CheckRelativePaths();

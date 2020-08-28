@@ -42,9 +42,7 @@ namespace EawXBuildTest.Tasks
         public void GivenPathToDirectory__WhenCallingRun__ShouldDeleteDirectory()
         {
             const string dirPath = "Data";
-
-            var fileSystem = new MockFileSystem();
-            fileSystem.AddDirectory(dirPath);
+            _fileSystem.AddDirectory(dirPath);
 
             _sut.Path = dirPath;
 
@@ -52,5 +50,29 @@ namespace EawXBuildTest.Tasks
 
             _assertions.AssertDirectoryDoesNotExist(dirPath);
         }
+        
+        [TestMethod]
+        [TestCategory(TestUtility.TEST_TYPE_UTILITY)]
+        public void GivenPathToDirectory__ShouldDescribeTask()
+        {
+            const string dirPath = "Data";
+            _fileSystem.AddDirectory(dirPath);
+        
+            _sut.Path = dirPath;
+        
+            Assert.AreEqual($"Cleaning directory {dirPath}", _sut.Description);
+        }
+        
+        [TestMethod]
+        [TestCategory(TestUtility.TEST_TYPE_UTILITY)]
+        public void GivenPathToFile__ShouldDescribeTask()
+        {
+            const string filePath = "Data/MyFile.txt";
+        
+            _sut.Path = filePath;
+        
+            Assert.AreEqual($"Cleaning file {filePath}", _sut.Description);
+        }
+        
     }
 }

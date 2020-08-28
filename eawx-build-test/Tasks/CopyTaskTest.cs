@@ -347,6 +347,18 @@ namespace EawXBuildTest.Tasks {
             _sut.Run();
         }
 
+        [TestMethod]
+        [TestCategory(TestUtility.TEST_TYPE_UTILITY)]
+        public void GivenSourceAndDestination__ShouldDescribeTask() {
+            var pathToSource = "Path/To/Source";
+            var pathToDest = "Path/To/Dest";
+            
+            _sut.Source = pathToSource;
+            _sut.Destination = pathToDest;
+            
+            Assert.AreEqual($"Copying files from \"{pathToSource}\" to \"{pathToDest}\"", _sut.Description);
+        }
+
 
         private MockFileData GetFile(string path) {
             return _fileSystem.GetFile(path);

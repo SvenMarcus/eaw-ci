@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using EawXBuild.Services.Process;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,6 +10,9 @@ namespace EawXBuildTest.Services.Process {
         public virtual void Start(string executablePath, string arguments) {
         }
 
+        public virtual void Start(ProcessStartInfo processStartInfo) {
+        }
+
         public virtual void WaitForExit() {
         }
 
@@ -16,7 +20,6 @@ namespace EawXBuildTest.Services.Process {
     }
 
     public class ProcessRunnerStub : ProcessRunnerDummy {
-
         public override int ExitCode { get; set; }
     }
 
@@ -24,17 +27,24 @@ namespace EawXBuildTest.Services.Process {
         public bool WasStarted { get; private set; }
 
         public string ExecutablePath { get; private set; }
-        
+
         public string Arguments { get; private set; }
+
+        public string WorkingDirectory { get; set; }
 
         public override void Start(string executablePath) {
             WasStarted = true;
             ExecutablePath = executablePath;
         }
-        
+
         public override void Start(string executablePath, string arguments) {
             Start(executablePath);
             Arguments = arguments;
+        }
+
+        public override void Start(ProcessStartInfo processStartInfo) {
+            Start(processStartInfo.FileName, processStartInfo.Arguments);
+            WorkingDirectory = processStartInfo.WorkingDirectory;
         }
 
         public override void WaitForExit() {
@@ -59,7 +69,7 @@ namespace EawXBuildTest.Services.Process {
                 _callOrder += "e";
                 return 0;
             }
-            set {}
+            set { }
         }
 
         public void Verify() {

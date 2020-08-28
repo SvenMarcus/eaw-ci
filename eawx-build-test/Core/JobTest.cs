@@ -26,6 +26,23 @@ namespace EawXBuildTest.Core {
             AssertTaskWasRun(secondTask);
         }
 
+        [TestMethod]
+        [TestCategory(TestUtility.TEST_TYPE_HOLY)]
+        public void GivenJobWithTasks__ShouldLogTaskDescription() {
+            var stringBuilder = new StringBuilder();
+            var writer = new StringWriter(stringBuilder);
+            Console.SetOut(writer);
+
+            var sut = new Job("job");
+            var firstTask = new TaskDummy {Description = "first"};
+            var secondTask = new TaskDummy {Description = "second"};
+            sut.AddTask(firstTask);
+            sut.AddTask(secondTask);
+
+            sut.Run();
+            Assert.AreEqual("first" + Environment.NewLine + "second" + Environment.NewLine, stringBuilder.ToString());
+        }
+
         private static void AssertTaskWasRun(TaskSpy firstTask) {
             Assert.IsTrue(firstTask.WasRun, "Task should have been run, but wasn't.");
         }

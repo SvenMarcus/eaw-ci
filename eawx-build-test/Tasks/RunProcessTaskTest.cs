@@ -40,6 +40,27 @@ namespace EawXBuildTest.Tasks {
         }
 
         [TestMethod]
+        public void GivenNoWorkingDirectory__WhenCallingRun__ShouldStartProcessInCurrentWorkingDirectory() {
+            _sut.Run();
+            Assert.AreEqual(System.Environment.CurrentDirectory, _runner.WorkingDirectory);
+        }
+
+        [TestMethod]
+        public void
+            GivenPathToExecutable_Arguments_And_WorkingDirectory__WhenCallingRun__ShouldStartProcessWithGivenConfig() {
+            const string arguments = "--first --second --third";
+            const string workingDir = "working/directory";
+            _sut.Arguments = arguments;
+            _sut.WorkingDirectory = workingDir;
+
+            _sut.Run();
+
+            AssertProcessWasStartedWithExecutable(_runner, _executablePath);
+            Assert.AreEqual(arguments, _runner.Arguments);
+            Assert.AreEqual(workingDir, _runner.WorkingDirectory);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ProcessFailedException))]
         public void GivenExecutableThatExitsWithCodeOne__WhenCallingRun__ShouldThrowProcessFailedException() {
             var runner = new ProcessRunnerStub {ExitCode = 1};
@@ -68,12 +89,19 @@ namespace EawXBuildTest.Tasks {
 
             _sut.Run();
         }
-        
+
         [TestMethod]
         public void GivenAbsolutePath__WhenCallingRun__ShouldNotStartProcess() {
             _sut.ExecutablePath = "/absolute/path";
             Assert.ThrowsException<NoRelativePathException>(() => _sut.Run());
             Assert.IsFalse(_runner.WasStarted);
+        }
+
+        [TestMethod]
+        public void GivenExecutablePath__ShouldDescribeProcess() {
+            _sut.ExecutablePath = "myProcess";
+
+            Assert.AreEqual($"Launching process \"{_sut.ExecutablePath}\"", _sut.Description);
         }
 
         private static void AssertProcessWasStartedWithExecutable(ProcessRunnerSpy runner, string executablePath) {
