@@ -1,9 +1,11 @@
+using System;
+
 namespace EawXBuild.Core {
     public interface IJob {
         string Name { get; }
 
         void AddTask(ITask task);
 
-        void Run();
+        void Run(TaskProgress progress = null);
     }
 }

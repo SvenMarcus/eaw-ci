@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,16 +17,17 @@ namespace EawXBuild.Core {
             jobs.Add(job);
         }
 
-        public Task RunJobAsync(string jobName) {
+        public Task RunJobAsync(string jobName, TaskProgress progress = null) {
             var job = FindJobWithName(jobName);
             if (job == null)
                 throw new JobNotFoundException(jobName);
 
-            return Task.Run(() => job.Run());
+            return Task.Run(() => job.Run(progress));
         }
 
+
         public List<Task> RunAllJobsAsync() {
-            return jobs.Select(job => Task.Run(job.Run)).ToList();
+            return jobs.Select(job => Task.Run(() => job.Run())).ToList();
         }
 
         private IJob FindJobWithName(string jobName) {

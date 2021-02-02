@@ -8,7 +8,7 @@ namespace EawXBuildTest.Core {
 
         public virtual void AddTask(ITask task) { }
 
-        public virtual void Run() { }
+        public virtual void Run(TaskProgress progress) { }
     }
 
     public class JobStub : JobDummy {
@@ -23,9 +23,11 @@ namespace EawXBuildTest.Core {
 
     public class JobSpy : JobStub {
         public bool WasRun { get; private set; }
+        public TaskProgress ReceivedProgress { get; private set; }
 
-        public override void Run() {
+        public override void Run(TaskProgress progress) {
             WasRun = true;
+            ReceivedProgress = progress;
         }
     }
 
@@ -36,7 +38,7 @@ namespace EawXBuildTest.Core {
             _exceptionMessage = exceptionMessage;
         }
 
-        public override void Run() {
+        public override void Run(TaskProgress progress) {
             throw new Exception(_exceptionMessage);
         }
     }

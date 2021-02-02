@@ -1,3 +1,4 @@
+using System;
 using EawXBuild.Core;
 
 namespace EawXBuildTest.Core {
@@ -13,6 +14,12 @@ namespace EawXBuildTest.Core {
 
         public override void Run() {
             WasRun = true;
+        }
+    }
+
+    public class ThrowingTaskStub : TaskDummy {
+        public override void Run() {
+            throw new Exception();
         }
     }
 }

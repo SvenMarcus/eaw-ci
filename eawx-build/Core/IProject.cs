@@ -1,11 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EawXBuild.Core {
     public interface IProject {
         string Name { get; set; }
         void AddJob(IJob job);
 
-        System.Threading.Tasks.Task RunJobAsync(string jobName);
+        Task RunJobAsync(string jobName, TaskProgress progress = null);
         List<System.Threading.Tasks.Task> RunAllJobsAsync();
     }
 }

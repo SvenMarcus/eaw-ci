@@ -1,7 +1,4 @@
 using System;
-using System.Globalization;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using EawXBuild.Core;
 using EawXBuild.Exceptions;
@@ -19,7 +16,7 @@ namespace EawXBuildTest.Core {
 
         [TestMethod]
         [TestCategory(TestUtility.TEST_TYPE_HOLY)]
-        public async System.Threading.Tasks.Task GivenProjectWithNamedJob__WhenCallingRunWithJobName__ShouldRunJob() {
+        public async Task GivenProjectWithNamedJob__WhenCallingRunWithJobName__ShouldRunJob() {
             var jobSpy = MakeJobSpy("job");
             _sut.AddJob(jobSpy);
 
@@ -30,7 +27,7 @@ namespace EawXBuildTest.Core {
 
         [TestMethod]
         [TestCategory(TestUtility.TEST_TYPE_HOLY)]
-        public async System.Threading.Tasks.Task
+        public async Task
             GivenProjectWithTwoJobs__WhenCallingRunWithJobName__ShouldOnlyRunWithMatchingName() {
             var otherJob = MakeJobSpy("other");
             _sut.AddJob(otherJob);
@@ -41,6 +38,17 @@ namespace EawXBuildTest.Core {
 
             AssertJobWasRun(expected);
             AssertJobWasNotRun(otherJob);
+        }
+        
+        [TestMethod]
+        public async Task GivenProjectWithJob__WhenRunningJobWith__ShouldRunJobWithProgress() {
+            var jobSpy = MakeJobSpy("job");
+            _sut.AddJob(jobSpy);
+
+            var expected = new TaskProgress();
+            await _sut.RunJobAsync("job", expected);
+
+            Assert.AreEqual(expected, jobSpy.ReceivedProgress);
         }
 
         [TestMethod]
@@ -71,7 +79,6 @@ namespace EawXBuildTest.Core {
         public void GivenProjectWithJob__WhenAddingJobWithSameName__ShouldThrowDuplicateJobNameException() {
             var jobSpy = MakeJobSpy("job");
 
-            Assert.IsNotNull(_sut != null, nameof(_sut) + " != null");
             _sut.AddJob(jobSpy);
             _sut.AddJob(MakeJobSpy("job"));
         }

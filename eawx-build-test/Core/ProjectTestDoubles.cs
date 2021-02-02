@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using EawXBuild.Core;
 using Task = System.Threading.Tasks.Task;
@@ -8,7 +9,7 @@ namespace EawXBuildTest.Core {
 
         public virtual void AddJob(IJob job) { }
 
-        public virtual Task RunJobAsync(string jobName) {
+        public virtual Task RunJobAsync(string jobName, TaskProgress progress = null) {
             return null;
         }
 
@@ -26,7 +27,7 @@ namespace EawXBuildTest.Core {
             Jobs.Add(job);
         }
 
-        public override Task RunJobAsync(string jobName) {
+        public override Task RunJobAsync(string jobName, TaskProgress progress = null) {
             return Task.CompletedTask;
         }
     }
